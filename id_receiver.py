@@ -1,7 +1,5 @@
-from nba_api.stats.endpoints import leaguedashteamstats
 import json
 import requests
-import pandas as pd
 
 teams = json.loads(requests.get(
     'https://raw.githubusercontent.com/bttmly/nba/master/data/teams.json').text)

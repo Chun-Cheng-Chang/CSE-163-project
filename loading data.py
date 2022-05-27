@@ -1,38 +1,24 @@
 from nba_api.stats.endpoints import leaguedashteamstats
+from id_receiver import IDReceive as id
 import json
-import requests
 import pandas as pd
 
-teams = json.loads(requests.get(
-    'https://raw.githubusercontent.com/bttmly/nba/master/data/teams.json').text)
-players = json.loads(requests.get(
-    'https://raw.githubusercontent.com/bttmly/nba/master/data/players.json').text)
+def main():
+    for year in range(0, 26):
+        team_json = leaguedashteamstats.LeagueDashTeamStats(
+            season=f'{1996 + year}-{str(1996 + year + 1)[2:]}')
+
+        team_data = json.loads(team_json.get_json())
+        relevant_data = team_data['resultSets'][0]
+        headers = relevant_data['headers']
+        rows = relevant_data['rowSet']
+
+        total = pd.DataFrame(rows)
+        total.columns = headers
+        total = total[['TEAM_ID', 'TEAM_NAME', 'GP', 'W_PCT']]
+
+        total.to_csv(f'past_win_pct/{1996 + year}-{str(1996 + year + 1)[2:]}_winning_rate.csv', index = False, encoding='utf-8')
 
 
-def get_team_id(queried_team):
-    for team in teams:
-        if team['teamName'] == queried_team:
-            return team['teamId']
-    return -1
-
-
-def get_player_id(first, last):
-    for player in players:
-        if player['firstName'] == first and player['lastName'] == last:
-            return player['playerId']
-    return -1
-
-team_json = leaguedashteamstats.LeagueDashTeamStats(
-    season='2015-16',
-    team_id_nullable=get_team_id('Golden State Warriors'),
-)
-
-team_data = json.loads(team_json.get_json())
-relevant_data = team_data['resultSets'][0]
-headers = relevant_data['headers']
-rows = relevant_data['rowSet']
-
-total = pd.DataFrame(rows)
-total.columns = headers
-
-print(total)
+if __name__ == '__main__':
+    main()

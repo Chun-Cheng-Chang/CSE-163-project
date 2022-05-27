@@ -1,7 +1,3 @@
-import imp
-from nba_api.stats.endpoints import s
-import json
-import requests
 import pandas as pd
-import matplotlib as mpl
-import matplotlib.pyplot as plt
+
+pd.read_csv('past_win_pct/1996-97_winning_rate.csv')
