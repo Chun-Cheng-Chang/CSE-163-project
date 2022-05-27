@@ -71,6 +71,8 @@ def create_court(ax, color):
 
 def main():
     mpl.rcParams['axes.linewidth'] = 2
+    with open('output.json', 'w') as outfile:
+        json.dump(relevant_data, outfile)
     fig = plt.figure(figsize=(4, 3.76))
     ax = fig.add_axes([0, 0, 1, 1])
     ax = create_court(ax, 'black')
