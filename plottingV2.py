@@ -5,7 +5,20 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from id_receiver import IDReceive as id
 
+with open('player_data/1996-97') as json_file:
+    player_data_in_year = json.load(json_file)
 
+
+def get_shot_data(team_id, player_id):
+    shot_json = shotchartdetail.ShotChartDetail(
+        team_id=team_id,
+        player_id=player_id,
+        context_measure_simple='FGA',
+        season_nullable='2015-16',
+        season_type_all_star='Regular Season')
+
+
+"""
 shot_json = shotchartdetail.ShotChartDetail(
     team_id=id.get_team_id('Golden State Warriors'),
     player_id=id.get_player_id('Klay', 'Thompson'),
@@ -50,7 +63,6 @@ def create_court(ax, color, player_data, plot_type):
     ax.hexbin(player_data['LOC_X'], player_data['LOC_Y'] + 60, gridsize=(50,
               50), extent=(-300, 300, 0, 940), bins='log', cmap=cmap[plot_type])
 
-"""
 def save(player_data, plot_type):
     mpl.rcParams['axes.linewidth'] = 2
     fig = plt.figure(figsize=(4, 3.76))
@@ -58,7 +70,6 @@ def save(player_data, plot_type):
     ax = create_court(ax, 'black', player_data, plot_type)
     fig.savefig(f'{player_data['TEAM_NAME']}/{player_data['PLAYER_NAME']}_shot_chart.png', dpi=300)
     plt.show()
-"""
 
 def main():
     print("Which player's shot chart would you like to see?")
@@ -74,3 +85,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
