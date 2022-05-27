@@ -1,33 +1,14 @@
 from nba_api.stats.endpoints import shotchartdetail
 import json
-import requests
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-
-teams = json.loads(requests.get(
-    'https://raw.githubusercontent.com/bttmly/nba/master/data/teams.json').text)
-players = json.loads(requests.get(
-    'https://raw.githubusercontent.com/bttmly/nba/master/data/players.json').text)
-
-
-def get_team_id(queried_team):
-    for team in teams:
-        if team['teamName'] == queried_team:
-            return team['teamId']
-    return -1
-
-
-def get_player_id(first, last):
-    for player in players:
-        if player['firstName'] == first and player['lastName'] == last:
-            return player['playerId']
-    return -1
+from id_receiver import IDReceive as id
 
 
 shot_json = shotchartdetail.ShotChartDetail(
-    team_id=get_team_id('Golden State Warriors'),
-    player_id=get_player_id('Klay', 'Thompson'),
+    team_id=id.get_team_id('Golden State Warriors'),
+    player_id=id.get_player_id('Klay', 'Thompson'),
     context_measure_simple='FGA',
     season_nullable='2015-16',
     season_type_all_star='Regular Season')
@@ -71,8 +52,6 @@ def create_court(ax, color):
 
 def main():
     mpl.rcParams['axes.linewidth'] = 2
-    with open('output.json', 'w') as outfile:
-        json.dump(relevant_data, outfile)
     fig = plt.figure(figsize=(4, 3.76))
     ax = fig.add_axes([0, 0, 1, 1])
     ax = create_court(ax, 'black')
