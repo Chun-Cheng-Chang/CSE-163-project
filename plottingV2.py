@@ -57,7 +57,7 @@ def save(player_data, plot_type, save_path):
 
 
 def main():
-    for year in range(9, 26):
+    for year in range(0, 26):
         os.mkdir(f'shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}')
         os.mkdir(f'shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}/FGM')
         with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}_players_in_team.json') as json_file:
