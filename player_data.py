@@ -3,6 +3,7 @@ from id_receiver import IDReceive as id
 import json
 import pandas as pd
 
+
 def main():
     for year in range(0, 26):
         team_json = leaguedashplayerstats.LeagueDashPlayerStats(
@@ -20,11 +21,13 @@ def main():
         player_data = {team: {} for team in total['team_name'].unique()}
         for i in range(len(total)):
             player = total.iloc[i]
-            player_data[player['team_name']].update({player['PLAYER_NAME']: player.to_dict()})
+            player_data[player['team_name']].update(
+                {player['PLAYER_NAME']: player.to_dict()})
 
-        players_in_team = {team: list(player_data[team].keys()) for team in player_data}
+        players_in_team = {team: list(
+            (name, player_data[team][name]['PLAYER_ID'])for name in player_data[team].keys()) for team in player_data}
 
-        #with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}.json', 'w') as f:
+        # with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}.json', 'w') as f:
         #    json.dump(player_data, f)
         with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}_players_in_team.json', 'w') as f:
             json.dump(players_in_team, f)
