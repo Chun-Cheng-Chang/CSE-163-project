@@ -1,13 +1,12 @@
 import pandas as pd
-import numpy as np
-import tensorflow as tf
 from tensorflow import keras
 from sklearn.model_selection import train_test_split
 
 
 def main():
-    used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game', 'PTS/game', 'FG_pct',
-                'FG3_pct', 'REB/game', 'AST/game', 'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
+    used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game',
+                'PTS/game', 'FG_pct', 'FG3_pct', 'REB/game', 'AST/game',
+                'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
     raw = pd.read_csv('total_player_data.csv')
 
     def salary_level(salary):
@@ -25,11 +24,6 @@ def main():
             return 0
 
     def year(s):
-        """
-        Returns the first two characters of the given str as a str.
-        
-        Assumes there are at least two characters in s.
-        """
         return s[2:4]
 
     y = raw['salary'].apply(salary_level)
@@ -45,21 +39,21 @@ def main():
     best_acc = 0
     for i in range(100):
         model = keras.Sequential([
-            keras.layers.Input(shape=(15,)),  # input layer
-            keras.layers.Dense(101, activation='relu'),  # hidden layer (1)
-            keras.layers.Dense(116, activation='relu'),  # hidden layer (2)
-            keras.layers.Dense(6, activation='softmax') # output layer
+            keras.layers.Input(shape=(15,)),
+            keras.layers.Dense(101, activation='relu'),
+            keras.layers.Dense(116, activation='relu'),
+            keras.layers.Dense(6, activation='softmax')
         ])
         model.compile(optimizer='adam',
-                    loss='sparse_categorical_crossentropy',
-                    metrics=['accuracy'])
+                      loss='sparse_categorical_crossentropy',
+                      metrics=['accuracy'])
         model.fit(dftrain, y_train, epochs=40)
-        test_loss, test_acc = model.evaluate(dfeval,  y_eval, verbose=1) 
+        test_loss, test_acc = model.evaluate(dfeval,  y_eval, verbose=1)
 
         if test_acc > best_acc:
             best_acc = test_acc
             best_model = model
-    best_model.save('best_salary_model_V3.h5')
+    best_model.save('best_salary_model.h5')
     print(best_acc)
 
 

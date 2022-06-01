@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 for year in range(0, 25):
-    URL = f'https://hoopshype.com/salaries/players/{1996 + year}-{1997 + year}/'
+    URL = 'https://hoopshype.com/salaries/players/' + \
+          f'{1996 + year}-{1997 + year}/'
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(id="wrapper")
-    results = results.find_all("table", class_="hh-salaries-ranking-table hh-salaries-table-sortable responsive")
+    results = results.find_all("table", class_="hh-salaries-ranking-table" +
+                               " hh-salaries-table-sortable responsive")
     for result in results:
         info = result.find("tbody")
         players = {}
@@ -22,7 +24,8 @@ URL = 'https://hoopshype.com/salaries/players/'
 page = requests.get(URL)
 soup = BeautifulSoup(page.content, "html.parser")
 results = soup.find(id="wrapper")
-results = results.find_all("table", class_="hh-salaries-ranking-table hh-salaries-table-sortable responsive")
+results = results.find_all("table", class_="hh-salaries-ranking-table" +
+                           " hh-salaries-table-sortable responsive")
 
 for result in results:
     info = result.find("tbody")

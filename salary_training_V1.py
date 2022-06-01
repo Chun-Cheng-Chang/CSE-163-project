@@ -1,12 +1,12 @@
 import pandas as pd
 import tensorflow as tf
-from tensorflow import keras
 from sklearn.model_selection import train_test_split
 
 
 def main():
-    used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game', 'PTS/game', 'FG_pct',
-                'FG3_pct', 'REB/game', 'AST/game', 'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
+    used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game',
+                'PTS/game', 'FG_pct', 'FG3_pct', 'REB/game', 'AST/game',
+                'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
     raw = pd.read_csv('total_player_data.csv')
 
     def salary_level(salary):
@@ -26,7 +26,7 @@ def main():
     def year(s):
         """
         Returns the first two characters of the given str as a str.
-        
+
         Assumes there are at least two characters in s.
         """
         return s[2:4]
@@ -44,9 +44,8 @@ def main():
         # Shuffle and repeat if you are in training mode.
         if training:
             dataset = dataset.shuffle(1000).repeat()
-        
         return dataset.batch(batch_size)
-    
+
     my_feature_columns = []
     for key in dftrain.keys():
         my_feature_columns.append(tf.feature_column.numeric_column(key=key))
