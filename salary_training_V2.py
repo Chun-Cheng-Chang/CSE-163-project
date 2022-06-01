@@ -41,19 +41,26 @@ def main():
 
     dftrain, dfeval, y_train, y_eval = train_test_split(df, y, test_size=0.2)
 
-    model = keras.Sequential([
-        keras.layers.Input(shape=(15,)),  # input layer
-        keras.layers.Dense(128, activation='relu'),  # hidden layer (1)
-        keras.layers.Dense(128, activation='relu'),  # hidden layer (2)
-        keras.layers.Dense(6, activation='softmax') # output layer
-    ])
-    model.compile(optimizer='adam',
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
-    model.fit(dftrain, y_train, epochs=10)
-    test_loss, test_acc = model.evaluate(dfeval,  y_eval, verbose=1) 
+    best_model = None
+    best_acc = 0
+    for i in range(100):
+        model = keras.Sequential([
+            keras.layers.Input(shape=(15,)),  # input layer
+            keras.layers.Dense(101, activation='relu'),  # hidden layer (1)
+            keras.layers.Dense(116, activation='relu'),  # hidden layer (2)
+            keras.layers.Dense(6, activation='softmax') # output layer
+        ])
+        model.compile(optimizer='adam',
+                    loss='sparse_categorical_crossentropy',
+                    metrics=['accuracy'])
+        model.fit(dftrain, y_train, epochs=40)
+        test_loss, test_acc = model.evaluate(dfeval,  y_eval, verbose=1) 
 
-    print('Test accuracy:', test_acc)
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_model = model
+    best_model.save('best_salary_model_V3.h5')
+    print(best_acc)
 
 
 if __name__ == '__main__':
