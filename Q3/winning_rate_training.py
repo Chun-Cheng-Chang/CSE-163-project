@@ -12,11 +12,11 @@ STL/game_mean, BLK/game_std, BLK/game_mean, TOV/game_std, TOV/game_mean,
 Plus_Minus_std, Plus_Minus_mean, salary_std, salary_mean
 
 lables:
-    0: 0 <= winning rate < 200,
-    1: 200 <= winning rate < 400,
-    2: 400 <= winning rate < 600,
-    3: 600 <= winning rate < 800,
-    4: 800 <= winning rate < 1000
+    0: 0 <= winning rate < 0.2,
+    1: 0.2 <= winning rate < 0.4,
+    2: 0.4 <= winning rate < 0.6,
+    3: 0.6 <= winning rate < 0.8,
+    4: 0.8 <= winning rate < 1
 """
 
 

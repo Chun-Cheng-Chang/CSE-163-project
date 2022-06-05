@@ -1,18 +1,15 @@
 # The instruction for running files in this project
-
 ## The instruction for setting up the environment for this project:
-
-API: nba_api; install with command pip install nba_api
-Module: pandas; install with command pip install pandas
-        matplotlib; install with command pip install matplotlib
-        numpy; install with command pip install numpy
-        sklearn; install with command pip install sklearn
-        tensorflow; install with command pip install tensorflow
-        beautifulsoup; install with command pip install beuitifulsoup
-        requests; install with command pip install requests
+    API: nba_api; install with command pip install nba_api
+    Module: pandas; install with command pip install pandas
+            matplotlib; install with command pip install matplotlib
+            numpy; install with command pip install numpy
+            sklearn; install with command pip install sklearn
+            tensorflow; install with command pip install tensorflow
+            beautifulsoup; install with command pip install beuitifulsoup
+            requests; install with command pip install requests
 
 ## The instruction for running the files in this project:
-
 ### Q1: visualizing player's shot chart
     1. Run plotting.py (plottingV2.py is for generating all players'
        shot charts since 1996).

@@ -26,26 +26,24 @@ def create_court(ax, color, player_shot_data, plot_type):
     # Short corner 3PT lines
     ax.plot([-220, -220], [0, 140], linewidth=2, color=color)
     ax.plot([220, 220], [0, 140], linewidth=2, color=color)
-    ax.add_artist(mpl.patches.Arc((0, 140), 440, 315, theta1=0,
-                  theta2=180, facecolor='none', edgecolor=color, lw=2))
     ax.plot([-80, -80], [0, 190], linewidth=2, color=color)
     ax.plot([80, 80], [0, 190], linewidth=2, color=color)
-    ax.plot([-60, -60], [0, 190], linewidth=2, color=color)
-    ax.plot([60, 60], [0, 190], linewidth=2, color=color)
     ax.plot([-80, 80], [190, 190], linewidth=2, color=color)
-    ax.add_artist(mpl.patches.Circle(
-        (0, 190), 60, facecolor='none', edgecolor=color, lw=2))
-    ax.add_artist(mpl.patches.Circle(
-        (0, 60), 15, facecolor='none', edgecolor=color, lw=2))
-    ax.plot([-30, 30], [40, 40], linewidth=2, color=color)
+    ax.plot([-30, 30], [40, 40], linewidth=4, color=color)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.set_xlim(-250, 250)
     ax.set_ylim(0, 470)
     cmap = {'FGA': 'Greens', 'FGM': 'Blues'}
     ax.hexbin(player_shot_data['LOC_X'], player_shot_data['LOC_Y'] + 60,
-              gridsize=(50, 50), extent=(-300, 300, 0, 940), bins='log',
+              gridsize=(30, 30), extent=(-300, 300, 0, 940),
               cmap=cmap[plot_type])
+    ax.add_artist(mpl.patches.Circle(
+        (0, 190), 60, facecolor='none', edgecolor=color, lw=2))
+    ax.add_artist(mpl.patches.Circle(
+        (0, 60), 15, facecolor='none', edgecolor=color, lw=3))
+    ax.add_artist(mpl.patches.Arc((0, 140), 440, 315, theta1=0,
+                  theta2=180, facecolor='none', edgecolor=color, lw=2))
 
 
 def save(player_data, plot_type='FGM', save_path='Q1/player_shots.png'):

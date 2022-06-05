@@ -6,7 +6,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 """
-features catagory: std => standard deviation, mean => mean
+features catagory:
 Season, age, team_w_pct, GP, w_pct, min/game, PTS/game, FG_pct, FG3_pct,
 REB/game, AST/game, STL/game, BLK/game, TOV/game, Plus_Minus
 
