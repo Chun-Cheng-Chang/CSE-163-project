@@ -14,13 +14,19 @@ Module: pandas; install with command pip install pandas
 ## The instruction for running the files in this project:
 
 ### Q1: visualizing player's shot chart
-    1. Enter the first name of the player you want to search.
-    2. Enter the last name of the player you want to search.
-    3. Enter the team name which the player you searched belong to.
-    4. Enter the season you want to search.
+    1. Run plotting.py (plottingV2.py is for generating all players'
+       shot charts since 1996).
+    2. Enter the first name of the player you want to search.
+    3. Enter the last name of the player you want to search.
+    4. Enter the team name which the player you searched belong to.
+    5. Enter the season you want to search.
 
 ### Q2: predicting players' salary based on their personal information.
-    1. Press enter.
+    1. For testing, running salary_prediction.py
+    2. The result for applying the best-prediction model on every player
+       will display on the terminal.
 
 ### Q3: predicting each team's winning rate based on players data.
-    1. Press enter.
+    1. For testing, running winning_rate_prediction.py
+    2. The result for applying the best-prediction model on every team,
+       every year will display on the terminal.
