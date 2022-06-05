@@ -20,7 +20,8 @@ def main():
                 salary = person.find("td", style="color:black").text.strip()
                 players.update({name: int(salary[1:].replace(',', ''))})
             players_info = pd.DataFrame.from_dict(players, orient='index')
-            players_info.to_csv(f'salary/{1996 + year}-{1997 + year}' +
+            players_info.to_csv('data_preparation/salary/' +
+                                f'{1996 + year}-{1997 + year}' +
                                 '_salary.csv')
 
     URL = 'https://hoopshype.com/salaries/players/'
@@ -39,7 +40,7 @@ def main():
                 .text.strip()
             players.update({name: int(salary[1:].replace(',', ''))})
         players_info = pd.DataFrame.from_dict(players, orient='index')
-        players_info.to_csv('salary/2021-2022_salary.csv')
+        players_info.to_csv('data_preparation/salary/2021-2022_salary.csv')
 
 
 if __name__ == "__main__":

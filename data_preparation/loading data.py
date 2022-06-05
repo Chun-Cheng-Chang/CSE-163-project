@@ -18,7 +18,8 @@ def main():
         total = total[['TEAM_ID', 'TEAM_NAME', 'GP', 'W_PCT']]
 
         total.to_csv(
-            f'past_win_pct/{1996 + year}-{str(1997 + year)[2:]}' +
+            'data_preparation/past_win_pct/' +
+            f'{1996 + year}-{str(1997 + year)[2:]}' +
             '_winning_rate.csv', index=False, encoding='utf-8')
 
 

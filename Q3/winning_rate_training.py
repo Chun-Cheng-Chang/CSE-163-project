@@ -21,7 +21,7 @@ lables:
 
 
 def main():
-    raw = pd.read_csv('winning_rate_training_data.csv')
+    raw = pd.read_csv('Q3/winning_rate_training_data.csv')
     feature = raw.drop(['win_pct'], axis=1).to_numpy()
 
     def winning_rate_range(win_pct):
@@ -54,7 +54,7 @@ def main():
                     best_acc = test_acc
                     best_model = model
     print('Test accuracy:', best_acc)
-    best_model.save(f'best_winning_rate_model_acc={best_acc:.2f}.h5')
+    best_model.save(f'Q3/best_winning_rate_model_acc={best_acc:.2f}.h5')
 
 
 if __name__ == '__main__':

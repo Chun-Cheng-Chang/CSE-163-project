@@ -4,7 +4,7 @@ import json
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from data_preparation.id_receiver import IDReceive as id
+from id_receiver import IDReceive as id
 import os
 
 
@@ -59,14 +59,16 @@ def save(player_data, plot_type, save_path):
 
 def main():
     for year in range(0, 26):
-        os.mkdir(f'shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}')
-        os.mkdir(f'shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}/FGM')
-        with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}' +
+        os.mkdir(f'Q1/shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}')
+        os.mkdir(f'Q1/shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}/FGM')
+        with open(f'data_preparation/player_data/{1996 + year}-' +
+                  f'{str(1996 + year + 1)[2:]}' +
                   '_players_in_team.json') as json_file:
             player_data_in_year = json.load(json_file)
         for team in player_data_in_year.keys():
             os.mkdir(
-                f'shot_chart/{1996 + year}-{str(1997 + year)[2:]}/FGM/{team}')
+                f'Q1/shot_chart/{1996 + year}-{str(1997 + year)[2:]}' +
+                f'/FGM/{team}')
             for player, player_id in player_data_in_year[team]:
                 shot_data = get_shot_data(id.get_team_id(team), player_id,
                                           f'{1996 + year}-' +
@@ -74,8 +76,8 @@ def main():
                                           'Regular Season', 'FGM')
                 time.sleep(1.500)
                 save(shot_data, 'FGM',
-                     f'shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}' +
-                     f'/FGM/{team}/{player}.png')
+                     f'Q1/shot_chart/{1996 + year}-{str(1996 + year + 1)[2:]}'
+                     + f'/FGM/{team}/{player}.png')
 
 
 if __name__ == '__main__':

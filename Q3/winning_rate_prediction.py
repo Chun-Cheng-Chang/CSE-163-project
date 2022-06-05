@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 """
@@ -21,7 +23,7 @@ lables:
 
 
 def main():
-    raw = pd.read_csv('winning_rate_training_data.csv')
+    raw = pd.read_csv('Q3/winning_rate_training_data.csv')
     features = raw.drop(['win_pct'], axis=1).to_numpy()
 
     def winning_rate_range(win_pct):
@@ -30,7 +32,8 @@ def main():
 
     lables = raw['win_pct'].apply(winning_rate_range).to_list()
 
-    model = tf.keras.models.load_model('best_winning_rate_model_acc=0.54.h5')
+    model = tf.keras.models.load_model(
+        'Q3/best_winning_rate_model_acc=0.46.h5')
     prediction = model.predict(features)
     prediction = np.split(prediction, 772)
 

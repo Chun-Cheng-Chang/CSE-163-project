@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from data_preparation.id_receiver import IDReceive as id
+from id_receiver import IDReceive as id
 
 
 def get_shot_data(team_id, player_id, season, season_type='Regular Season',
@@ -48,7 +48,7 @@ def create_court(ax, color, player_shot_data, plot_type):
               cmap=cmap[plot_type])
 
 
-def save(player_data, plot_type='FGM', save_path='player_shots.png'):
+def save(player_data, plot_type='FGM', save_path='Q1/player_shots.png'):
     mpl.rcParams['axes.linewidth'] = 2
     fig = plt.figure(figsize=(4, 3.76))
     ax = fig.add_axes([0, 0, 1, 1])

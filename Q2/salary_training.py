@@ -22,7 +22,7 @@ def main():
     used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game',
                 'PTS/game', 'FG_pct', 'FG3_pct', 'REB/game', 'AST/game',
                 'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
-    raw = pd.read_csv('total_player_data.csv')
+    raw = pd.read_csv('Q2/total_player_data.csv')
 
     def salary_level(salary):
         if salary > 30000000:
@@ -69,7 +69,7 @@ def main():
                 if test_acc > best_acc:
                     best_acc = test_acc
                     best_model = model
-    best_model.save(f'best_salary_model_acc={best_acc:.2f}.h5')
+    best_model.save(f'Q2/best_salary_model_acc={best_acc:.2f}.h5')
     print(best_acc)
 
 

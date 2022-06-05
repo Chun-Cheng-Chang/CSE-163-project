@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 """
@@ -22,7 +24,7 @@ def main():
     used_col = ['Season', 'age', 'team_w_pct', 'GP', 'w_pct', 'min/game',
                 'PTS/game', 'FG_pct', 'FG3_pct', 'REB/game', 'AST/game',
                 'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus']
-    raw = pd.read_csv('total_player_data.csv')
+    raw = pd.read_csv('Q2/total_player_data.csv')
 
     def salary_level(salary):
         if salary > 30000000:
@@ -47,7 +49,8 @@ def main():
     lables = raw['salary'].apply(salary_level)
     lables = lables.to_list()
 
-    model = tf.keras.models.load_model('best_salary_model_acc=0.59.h5')
+    model = tf.keras.models.load_model(
+        'Q2/best_salary_model_acc=0.59.h5')
     prediction = model.predict(features)
     prediction = np.split(prediction, 11319)
 

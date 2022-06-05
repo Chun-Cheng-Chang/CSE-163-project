@@ -7,7 +7,7 @@ COLUMNS = ['TEAM_ID', 'Player_Name', 'Season', 'age', 'team_w_pct', 'GP',
 
 
 def main():
-    raw = pd.read_csv('total_player_data.csv')
+    raw = pd.read_csv('Q3/total_player_data.csv')
     target_data_columns = COLUMNS[3:]
     target_data_columns.pop(1)
     target_data_columns.pop(2)
@@ -16,7 +16,7 @@ def main():
         df[(col + "_std")] = raw.groupby(['TEAM_ID', 'Season'])[col].std()
         df[(col + "_mean")] = raw.groupby(['TEAM_ID', 'Season'])[col].mean()
     df['win_pct'] = raw.groupby(['TEAM_ID', 'Season'])['team_w_pct'].mean()
-    df.to_csv('winning_rate_training_data.csv', index=False)
+    df.to_csv('Q3/winning_rate_training_data.csv', index=False)
 
 
 if __name__ == '__main__':

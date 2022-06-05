@@ -1,5 +1,5 @@
 from nba_api.stats.endpoints import leaguedashplayerstats
-from data_preparation.id_receiver import IDReceive as id
+from id_receiver import IDReceive as id
 import json
 import pandas as pd
 
@@ -28,10 +28,12 @@ def main():
             (name, player_data[team][name]['PLAYER_ID'])
             for name in player_data[team].keys()) for team in player_data}
 
-        with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}.json',
+        with open('data_preparation/player_data/' +
+                  f'{1996 + year}-{str(1996 + year + 1)[2:]}.json',
                   'w') as f:
             json.dump(player_data, f)
-        with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}' +
+        with open('data_preparation/player_data/' +
+                  f'{1996 + year}-{str(1996 + year + 1)[2:]}' +
                   '_players_in_team.json', 'w') as f:
             json.dump(players_in_team, f)
 

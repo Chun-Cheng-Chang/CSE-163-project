@@ -10,18 +10,20 @@ def main():
     player_info = []
     for year in range(0, 26):
         win_data = pd.read_csv(
-            f'past_win_pct/{1996 + year}-{str(1996 + year + 1)[2:]}' +
+            'data_preparation/past_win_pct/' +
+            f'{1996 + year}-{str(1996 + year + 1)[2:]}' +
             '_winning_rate.csv')
         win_pct = win_data['W_PCT']
         win_pct.index = win_data['TEAM_ID']
 
         df = pd.read_csv(
-            f'salary/{1996 + year}-{1997 + year}_salary.csv')
+            f'data_preparation/salary/{1996 + year}-{1997 + year}_salary.csv')
         salary = df['SALARY']
         salary.index = df['PLAYER']
         salary_data = salary.to_dict()
 
-        with open(f'player_data/{1996 + year}-{str(1996 + year + 1)[2:]}' +
+        with open('data_preparation/player_data/' +
+                  f'{1996 + year}-{str(1996 + year + 1)[2:]}' +
                   '.json') as f:
             players_data = json.load(f)
         for team in players_data.values():
@@ -48,7 +50,7 @@ def main():
 
     total_data = pd.DataFrame(player_info)
     total_data.columns = catagory
-    total_data.to_csv('total_player_data.csv', index=False)
+    total_data.to_csv('data_preparation/total_player_data.csv', index=False)
 
 
 if __name__ == "__main__":
