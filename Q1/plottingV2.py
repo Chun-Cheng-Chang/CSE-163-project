@@ -4,7 +4,7 @@ import json
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from id_receiver import IDReceive as id
+from data_preparation.id_receiver import IDReceive as id
 import os
 
 
@@ -24,7 +24,6 @@ def get_shot_data(team_id, player_id, season, season_type, plot_type):
 
 
 def create_court(ax, color, player_shot_data, plot_type):
-    # Short corner 3PT lines
     ax.plot([-220, -220], [0, 140], linewidth=2, color=color)
     ax.plot([220, 220], [0, 140], linewidth=2, color=color)
     ax.add_artist(mpl.patches.Arc((0, 140), 440, 315, theta1=0,

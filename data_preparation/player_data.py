@@ -1,5 +1,5 @@
 from nba_api.stats.endpoints import leaguedashplayerstats
-from id_receiver import IDReceive as id
+from data_preparation.id_receiver import IDReceive as id
 import json
 import pandas as pd
 

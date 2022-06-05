@@ -3,10 +3,10 @@ import json
 
 
 def main():
-    catagory = ['Player_Name', 'Season', 'age', 'team_w_pct', 'GP', 'w_pct',
-                'min/game', 'PTS/game', 'FG_pct', 'FG3_pct', 'REB/game',
-                'AST/game', 'STL/game', 'BLK/game', 'TOV/game', 'Plus_Minus',
-                'salary']
+    catagory = ['TEAM_ID', 'Player_Name', 'Season', 'age', 'team_w_pct', 'GP',
+                'w_pct', 'min/game', 'PTS/game', 'FG_pct', 'FG3_pct',
+                'REB/game', 'AST/game', 'STL/game', 'BLK/game', 'TOV/game',
+                'Plus_Minus', 'salary']
     player_info = []
     for year in range(0, 26):
         win_data = pd.read_csv(
@@ -29,7 +29,8 @@ def main():
                 if player['PLAYER_NAME'] in salary_data.keys():
 
                     game_played = player['GP']
-                    information = [player['PLAYER_NAME'],
+                    information = [player['TEAM_ID'],
+                                   player['PLAYER_NAME'],
                                    f'{1996 + year}-{str(1996 + year + 1)[2:]}',
                                    player['AGE'], win_pct[player['TEAM_ID']],
                                    game_played, player['W_PCT'],
@@ -47,7 +48,7 @@ def main():
 
     total_data = pd.DataFrame(player_info)
     total_data.columns = catagory
-    total_data.to_csv('total_player_data.csv')
+    total_data.to_csv('total_player_data.csv', index=False)
 
 
 if __name__ == "__main__":

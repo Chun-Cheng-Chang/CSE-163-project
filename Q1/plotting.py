@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from id_receiver import IDReceive as id
+from data_preparation.id_receiver import IDReceive as id
 
 
 def get_shot_data(team_id, player_id, season, season_type='Regular Season',

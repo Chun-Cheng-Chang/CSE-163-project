@@ -20,13 +20,7 @@ Module: pandas; install with command pip install pandas
     4. Enter the season you want to search.
 
 ### Q2: predicting playerrs' salary based on their personal information.
-    1. Enter the first name of the player you want to search.
-    2. Enter the last name of the player you want to search.
-    3. Enter the team name which the player you searched belong to.
-    4. Enter the season you want to search.
+    1. Press enter.
 
-### Q3: visualizing player's shot chart
-    1. Enter the first name of the player you want to search.
-    2. Enter the last name of the player you want to search.
-    3. Enter the team name which the player you searched belong to.
-    4. Enter the season you want to search.
+### Q3: predicting each team's winning rate based on players data.
+    1. Press enter.
