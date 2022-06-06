@@ -1,3 +1,7 @@
+"""
+This file is used to train a model to predict the winning rate of a team.
+"""
+
 import pandas as pd
 
 COLUMNS = ['TEAM_ID', 'Player_Name', 'Season', 'age', 'team_w_pct', 'GP',

@@ -1,3 +1,7 @@
+"""
+This file is used to scrapping the salary data from hoopshype.com
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd

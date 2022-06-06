@@ -22,8 +22,14 @@
     1. For testing, running salary_prediction.py
     2. The result for applying the best-prediction model on every player
        will display on the terminal.
+    3. For training, running salary_training.py
+    4. After running salary_training.py, there will be a .h5 file saved
+       in the directory, which is the file of best trained model.
 
 ### Q3: predicting each team's winning rate based on players data.
     1. For testing, running winning_rate_prediction.py
     2. The result for applying the best-prediction model on every team,
        every year will display on the terminal.
+    3. For training, running winning_rate_training.py
+    4. After running winning_rate_training.py, there will be a .h5 file
+       saved in the directory, which is the file of best trained model.

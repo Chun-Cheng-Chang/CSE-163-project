@@ -1,3 +1,8 @@
+"""
+This file is used to rearrange the messy data to obtain a more usable data
+for each player and team.
+"""
+
 from nba_api.stats.endpoints import leaguedashplayerstats
 from id_receiver import IDReceive as id
 import json

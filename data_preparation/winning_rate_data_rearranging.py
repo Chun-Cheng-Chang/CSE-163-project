@@ -1,3 +1,8 @@
+"""
+This file is used to rearrange the messy data to obtain a more usable data
+for winning rate.
+"""
+
 from nba_api.stats.endpoints import leaguedashteamstats
 import json
 import pandas as pd

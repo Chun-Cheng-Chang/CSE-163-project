@@ -1,3 +1,8 @@
+"""
+This file is used to rearrange the messy data to obtain a more usable data
+for winning rate training.
+"""
+
 import pandas as pd
 from tensorflow import keras
 from sklearn.model_selection import train_test_split

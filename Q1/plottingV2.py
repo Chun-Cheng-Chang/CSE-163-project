@@ -1,3 +1,9 @@
+"""
+This file is used to create the shot chart for each player in each team in each
+year.
+Do not try to run this file; it's slow and will take a long time to run.
+"""
+
 import time
 from nba_api.stats.endpoints import shotchartdetail
 import json
@@ -9,6 +15,9 @@ import os
 
 
 def get_shot_data(team_id, player_id, season, season_type, plot_type):
+    """
+    This function is used to get the shot data for players
+    """
     shot_json = shotchartdetail.ShotChartDetail(
         team_id=team_id,
         player_id=player_id,
@@ -24,6 +33,9 @@ def get_shot_data(team_id, player_id, season, season_type, plot_type):
 
 
 def create_court(ax, color, player_shot_data, plot_type):
+    """
+    This function is used to create the court for the shot chart.
+    """
     ax.plot([-220, -220], [0, 140], linewidth=2, color=color)
     ax.plot([220, 220], [0, 140], linewidth=2, color=color)
     ax.add_artist(mpl.patches.Arc((0, 140), 440, 315, theta1=0,
@@ -49,6 +61,9 @@ def create_court(ax, color, player_shot_data, plot_type):
 
 
 def save(player_data, plot_type, save_path):
+    """
+    This function is used to save the shot chart.
+    """
     mpl.rcParams['axes.linewidth'] = 2
     fig = plt.figure(figsize=(4, 3.76))
     ax = fig.add_axes([0, 0, 1, 1])

@@ -1,3 +1,7 @@
+"""
+This file is used to train a model to predict the salary of a player.
+"""
+
 import pandas as pd
 from tensorflow import keras
 from sklearn.model_selection import train_test_split

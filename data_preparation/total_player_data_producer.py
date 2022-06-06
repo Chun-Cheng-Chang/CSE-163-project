@@ -1,3 +1,8 @@
+"""
+This file is used to rearrange the messy data to obtain a more usable data
+for Q2, Q3 DNN model training.
+"""
+
 import pandas as pd
 import json
 

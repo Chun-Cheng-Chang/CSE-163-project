@@ -1,3 +1,8 @@
+"""
+This file is used to check the accuracy of the model by comparing the
+prediction with the actual salary level.
+"""
+
 import pandas as pd
 import numpy as np
 import tensorflow as tf
@@ -56,15 +61,21 @@ def main():
 
     correct = 0
     incorrect = 0
+    differences = {}
     for result, ans in zip(prediction, lables):
         predict = np.argmax(result)
         if predict == ans:
             correct += 1
         else:
             incorrect += 1
+        difference = abs(predict - ans)
+        if difference not in differences:
+            differences[difference] = 0
+        differences[difference] += 1
     print(f'\nCorrect: {correct}')
     print(f'Incorrect: {incorrect}')
     print(f'Accuracy: {correct / (correct + incorrect):.2f}')
+    print(f'Differences: {sorted(differences.items(), key=lambda x: x[0])}')
 
 
 if __name__ == '__main__':
